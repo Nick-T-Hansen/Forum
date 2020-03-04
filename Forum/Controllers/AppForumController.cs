@@ -7,6 +7,7 @@ using Forum.Data;
 using Forum.Data.Models;
 using Forum.Models.Forum;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Forum.Controllers
 {
@@ -14,6 +15,7 @@ namespace Forum.Controllers
     {
 
         private readonly IForum _forumService;
+        private readonly IPost _postService;
 
         public AppForumController(IForum forumService)
         {
@@ -39,6 +41,7 @@ namespace Forum.Controllers
         public IActionResult Topic(int id)
         {
             var forum = _forumService.GetById(id);
+            var posts = _postService.GetFilteredPosts(id)
             var postListings = ... 
         }
 
